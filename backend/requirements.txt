@@ -1,0 +1,9 @@
+Flask==3.0.0
+Flask-CORS==4.0.0
+beautifulsoup4==4.12.2
+requests==2.31.0
+deep-translator==1.11.4
+python-dotenv==1.0.0
+lxml==4.9.3
+googletrans
+APScheduler==3.10.4

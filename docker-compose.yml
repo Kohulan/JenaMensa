@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # Backend Flask API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: JenaMensa-backend
+    restart: unless-stopped
+    ports:
+      - "6000:6000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      # Mount translation cache for persistence
+      - translation-cache:/app/translation_cache
+    networks:
+      - JenaMensa-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:6000/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Frontend React + Vite
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: JenaMensa-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:4173"
+    environment:
+      - VITE_API_URL=http://backend:6000
+    depends_on:
+      - backend
+    networks:
+      - JenaMensa-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:4173/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+networks:
+  JenaMensa-network:
+    driver: bridge
+
+volumes:
+  translation-cache:
+    driver: local

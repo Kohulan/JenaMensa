@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-red-50 via-rose-50 to-white min-h-screen;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-red-200/50 shadow-xl;
+  }
+  
+  .glass-strong {
+    @apply bg-white/90 backdrop-blur-2xl border border-red-300/60 shadow-2xl;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-red-600 via-rose-600 to-red-700 bg-clip-text text-transparent;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300;
+  }
+  
+  .btn-secondary {
+    @apply glass px-6 py-3 rounded-xl font-semibold text-gray-700 hover:bg-white/80 hover:border-red-400/60 transform hover:scale-105 transition-all duration-300;
+  }
+  
+  .card {
+    @apply glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-red-200/30 transform hover:scale-[1.02] transition-all duration-300;
+  }
+  
+  .input-field {
+    @apply glass w-full px-4 py-3 rounded-xl bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(254, 226, 226, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #dc2626, #ef4444);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #b91c1c, #dc2626);
+}
+
+/* Leaflet map styling */
+.leaflet-container {
+  @apply rounded-2xl;
+}

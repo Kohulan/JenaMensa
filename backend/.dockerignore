@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.pyc
+
+# Environment files
+.env
+.env.local
+
+# Cache and temp files
+*.log
+.cache/
+translation_cache.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Debug files
+debug_scraper.py
+mobile_today.html
